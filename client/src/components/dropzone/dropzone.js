@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import LinkCont from "../linkcont/linkcont";
 import ProgressBar from "../progressbar/progressbar";
+import EmailForm from "../emailform/emailform";
 
 const DropZone = () => {
   const [percent, setPercent] = useState(0);
-
+  const [data, setData] = useState({});
+  const linkcont = useRef();
   const dropzone = useRef();
   const fileinputref = useRef();
   const browsebtn = useRef();
@@ -12,9 +15,9 @@ const DropZone = () => {
   const uploadURL = `${host}api/files`;
 
   const updateProgress = (e) => {
-    setPercent(Math.round((e.loaded / e.total) * 100));
-    console.log(percent);
     console.log(e);
+    // setPercent(Math.round((e.loaded / e.total) * 100));
+    console.log(percent);
   };
 
   const upload_file = () => {
@@ -26,26 +29,27 @@ const DropZone = () => {
     const form_data = new FormData();
     form_data.append("myfile", file);
 
-    // const xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
 
-    //
-    // xhr.onreadystatechange = () => {
-    // if (xhr.readyState === XMLHttpRequest.DONE) {
-    if (true) {
-      // console.log(xhr.response);
-      // console.log(xhr.readyState);
-      // showlink(JSON.parse(xhr.response));
-      showlink("hello");
-    }
-    // };
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        console.log(xhr.response);
+        console.log(xhr.readyState);
+        // showlink(JSON.parse(xhr.response));
+        setData(JSON.parse(xhr.response));
+        showlink("hello");
+      }
+    };
 
-    // xhr.upload.onprogress = updateProgress();
-    // xhr.open("POST", uploadURL);
-    // xhr.send(form_data);
+    xhr.upload.onprogress = updateProgress();
+    xhr.open("POST", uploadURL);
+    xhr.send(form_data);
+    // bgbarcont.current.style.display = "none";
   };
 
-  const showlink = (file) => {
+  const showlink = ({ file, url }) => {
     console.log(file);
+    linkcont.current.style.display = "inline";
     bgbarcont.current.style.display = "none";
   };
 
@@ -56,7 +60,6 @@ const DropZone = () => {
 
     dropzone.current.addEventListener("dragover", (e) => {
       e.preventDefault();
-      bgbarcont.current.style.display = "inline";
       console.log("its working");
       dropzone.current.classList.add("dragged");
     });
@@ -124,6 +127,12 @@ const DropZone = () => {
         </div>
         <div ref={bgbarcont} className="showhide">
           <ProgressBar percent={percent} setPercent={setPercent} />
+        </div>
+        <div className="linkcont" ref={linkcont}>
+          <LinkCont data={data} />
+        </div>
+        <div className="emailcont">
+          <EmailForm />
         </div>
       </section>
     </>

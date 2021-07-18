@@ -125,6 +125,7 @@ body,
 .smallpbbar {
     height: 3px;
     width: 100%;
+    margin-top: 5px;
     background-color: #03a9f4;
     border-radius: 2px;
     transform-origin: left;
@@ -133,5 +134,63 @@ body,
 }
 
 .percentcontainer {
+    width: 100%;
+}
+
+.linkshare,
+.input {
+    width: var(--containerwidth);
+}
+
+.input {
+    position: relative;
+}
+
+.linkshare .input input {
+    width: 100%;
+    border: 2px dashed var(--bordercolor) !important;
+    border-radius: 3px;
+    padding: 8px 15px;
+    box-sizing: border-box;
+    font-size: 20px;
+    background: #f5fcff;
+    color: #0000008c;
+}
+
+.input img {
+    position: absolute;
+    height: 22px;
+    width: 30px;
+    right: 7px;
+    top: 10px;
+    background: #f7fdff;
+    cursor: pointer;
+}
+
+.linkcont {
+    display: none;
+}
+
+.expire,
+p {
+    opacity: .7;
+    text-align: center;
+}
+
+.emailcont {
+    /* height: 100px; */
+    /* display: flex; */
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.forminnercont {
+    /* height: 100px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forminnercont form {
     width: 100%;
 }
