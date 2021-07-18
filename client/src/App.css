@@ -173,6 +173,7 @@ body,
 
 .expire,
 p {
+    font-size: 21px;
     opacity: .7;
     text-align: center;
 }
@@ -185,7 +186,7 @@ p {
 
 .emailcont input {
     border: none;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 2px solid #0288d147;
     height: 19px;
     font-size: 18px;
     text-align: center;
@@ -201,7 +202,7 @@ p {
 }
 
 .emailcont .filed {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     width: 400px;
@@ -216,7 +217,7 @@ p {
 .forminnercont form {
     border: 2px solid var(--bordercolor);
     width: 100%;
-    padding: 15px;
+    padding: 40px 50px 18px 50px;
     box-sizing: border-box;
     border-radius: 10px;
     display: flex;
