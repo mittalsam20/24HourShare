@@ -178,19 +178,48 @@ p {
 }
 
 .emailcont {
-    /* height: 100px; */
-    /* display: flex; */
-    /* justify-content: center; */
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
+.emailcont input {
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    height: 19px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.emailcontr label {
+    margin: 5px;
+    font-size: 18px;
+}
+
+.emailcont input:focus {
+    outline: none;
+}
+
+.emailcont .filed {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
 .forminnercont {
-    /* height: 100px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .forminnercont form {
+    border: 2px solid var(--bordercolor);
     width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -4,15 +4,18 @@ const EmailForm = () => {
       <p>Send Via Email</p>
       <div className="forminnercont">
         <form>
-          <label htmlFor="sender">
-            Your Email
-            <input type="email" name="from" id="sender" required />
-          </label>
-          <br />
-          <label htmlFor="reciever">
-            Recivers Email
-            <input type="email" name="to" id="reciever" required />
-          </label>
+          <div className="filed">
+            <label htmlFor="sender">
+              Your Email
+              <input type="email" name="from" id="sender" required />
+            </label>
+          </div>
+          <div className="filed">
+            <label htmlFor="reciever">
+              Recivers Email
+              <input type="email" name="to" id="reciever" required />
+            </label>
+          </div>
         </form>
       </div>
     </>
