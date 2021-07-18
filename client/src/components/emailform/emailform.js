@@ -12,6 +12,9 @@ const EmailForm = () => {
             <label htmlFor="reciever">Recivers Email</label>
             <input type="email" name="to" id="reciever" required />
           </div>
+          <div class="send-btn-container">
+            <button type="submit">Send</button>
+          </div>
         </form>
       </div>
     </>

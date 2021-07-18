@@ -11,6 +11,8 @@ const DropZone = () => {
   const fileinputref = useRef();
   const browsebtn = useRef();
   const bgbarcont = useRef();
+  const emailcont = useRef();
+
   const host = "https://innshare.herokuapp.com/";
   const uploadURL = `${host}api/files`;
 
@@ -51,6 +53,7 @@ const DropZone = () => {
     console.log(file);
     linkcont.current.style.display = "inline";
     bgbarcont.current.style.display = "none";
+    emailcont.current.style.display = "inline";
   };
 
   useEffect(() => {
@@ -131,7 +134,7 @@ const DropZone = () => {
         <div className="linkcont" ref={linkcont}>
           <LinkCont data={data} />
         </div>
-        <div className="emailcont">
+        <div className="emailcont" ref={emailcont}>
           <EmailForm />
         </div>
       </section>
