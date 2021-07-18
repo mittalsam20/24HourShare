@@ -6,12 +6,13 @@ import EmailForm from "../emailform/emailform";
 const DropZone = () => {
   const [percent, setPercent] = useState(0);
   const [data, setData] = useState({});
+
   const linkcont = useRef();
+  const emailcont = useRef();
   const dropzone = useRef();
   const fileinputref = useRef();
   const browsebtn = useRef();
   const bgbarcont = useRef();
-  const emailcont = useRef();
 
   const host = "https://innshare.herokuapp.com/";
   const uploadURL = `${host}api/files`;
@@ -49,16 +50,14 @@ const DropZone = () => {
     // bgbarcont.current.style.display = "none";
   };
 
-  const showlink = ({ file, url }) => {
-    console.log(file);
+  const showlink = ({ file: url }) => {
+    console.log(url);
     linkcont.current.style.display = "inline";
     bgbarcont.current.style.display = "none";
     emailcont.current.style.display = "inline";
   };
 
   useEffect(() => {
-    console.log(dropzone.current);
-    console.log(dropzone.current);
     console.log(dropzone.current);
 
     dropzone.current.addEventListener("dragover", (e) => {
@@ -91,7 +90,7 @@ const DropZone = () => {
       e.preventDefault();
       dropzone.current.classList.remove("dragged");
     });
-  }, [dropzone, browsebtn, fileinputref, bgbarcont]);
+  }, [dropzone, browsebtn, fileinputref, bgbarcont, emailcont, linkcont]);
 
   useEffect(() => {}, [percent]);
 
@@ -135,7 +134,7 @@ const DropZone = () => {
           <LinkCont data={data} />
         </div>
         <div className="emailcont" ref={emailcont}>
-          <EmailForm />
+          <EmailForm data={data} />
         </div>
       </section>
     </>
