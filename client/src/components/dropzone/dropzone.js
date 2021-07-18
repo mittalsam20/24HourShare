@@ -24,6 +24,17 @@ const DropZone = () => {
   };
 
   const upload_file = () => {
+
+    if(fileinputref.current.files.length>1){
+console.log("only one file")
+return;
+    }
+if(file.size[0]>100*1024*1024){
+
+  console.log("cant upload more than 100 mb");
+  return;
+}
+
     bgbarcont.current.style.display = "inline";
 
     console.log("upload file func ke andar", bgbarcont.current);
@@ -137,6 +148,11 @@ const DropZone = () => {
           <EmailForm data={data} />
         </div>
       </section>
+
+<div className="backimage">  
+
+</div>
+
     </>
   );
 };

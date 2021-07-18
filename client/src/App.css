@@ -7,6 +7,7 @@
 
 body,
 html {
+    overflow: hidden;
     font-family: system-ui;
     background-color: var(--mainbgcolor);
     height: 100%;
@@ -21,6 +22,11 @@ body,
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+#root {
+    display: flex;
+    flex-direction: row !important;
 }
 
 .uploadcontainer {
@@ -237,3 +243,25 @@ p {
     background-color: grey;
     color: darkblue;
 }
+
+.backimage {
+    background: url(./components/dropzone/bgpic.svg) no-repeat center;
+    background-size: contain;
+    height: 50vh;
+    width: 50vw;
+}
+
+@media screen and (max-width:900px) {
+     :root {
+        --containerwidth: 320px;
+    }
+    .backimage {
+        display: none;
+    }
+    .emailcont .filed {
+        flex-direction: column;
+        width: 300px;
+    }
+}
+
+@media {}

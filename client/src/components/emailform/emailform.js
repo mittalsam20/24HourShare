@@ -53,7 +53,7 @@ const EmailForm = ({ data }) => {
 
 
                 fetch(emailURL,{
-method:"POST"
+method:"POST",
 headers:{
 "Content-Type":"application/json",
 },
@@ -61,10 +61,10 @@ body:JSON.stringify(formdata),
 
                 }).then(res=>res.json()).then(data=>{console.log(data)
                 
-                if(success){
-setReciver("");
-setSender("");
-                }
+//                 if(success){
+// setReciver("");
+// setSender("");
+//                 }
                 
                 }).catch(err=>console.log(err));
               }}
