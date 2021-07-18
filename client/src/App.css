@@ -91,6 +91,9 @@ body,
     margin-top: 25px;
     border-radius: 10px;
     position: relative;
+}
+
+.showhide {
     display: none;
 }
 

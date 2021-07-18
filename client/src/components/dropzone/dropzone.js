@@ -7,6 +7,7 @@ const DropZone = () => {
   const dropzone = useRef();
   const fileinputref = useRef();
   const browsebtn = useRef();
+  const bgbarcont = useRef();
   const host = "https://innshare.herokuapp.com/";
   const uploadURL = `${host}api/files`;
 
@@ -17,21 +18,35 @@ const DropZone = () => {
   };
 
   const upload_file = () => {
+    bgbarcont.current.style.display = "inline";
+
+    console.log("upload file func ke andar", bgbarcont.current);
+
     const file = fileinputref.current.files[0];
     const form_data = new FormData();
     form_data.append("myfile", file);
 
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        console.log(xhr.response);
-        console.log(xhr.readyState);
-      }
-    };
+    // const xhr = new XMLHttpRequest();
+
+    //
+    // xhr.onreadystatechange = () => {
+    // if (xhr.readyState === XMLHttpRequest.DONE) {
+    if (true) {
+      // console.log(xhr.response);
+      // console.log(xhr.readyState);
+      // showlink(JSON.parse(xhr.response));
+      showlink("hello");
+    }
+    // };
 
     // xhr.upload.onprogress = updateProgress();
-    xhr.open("POST", uploadURL);
-    xhr.send(form_data);
+    // xhr.open("POST", uploadURL);
+    // xhr.send(form_data);
+  };
+
+  const showlink = (file) => {
+    console.log(file);
+    bgbarcont.current.style.display = "none";
   };
 
   useEffect(() => {
@@ -41,12 +56,15 @@ const DropZone = () => {
 
     dropzone.current.addEventListener("dragover", (e) => {
       e.preventDefault();
-      // console.log("its wokring");
+      bgbarcont.current.style.display = "inline";
+      console.log("its working");
       dropzone.current.classList.add("dragged");
     });
+
     dropzone.current.addEventListener("dragleave", (e) => {
       dropzone.current.classList.remove("dragged");
     });
+
     dropzone.current.addEventListener("drop", (e) => {
       e.preventDefault();
       dropzone.current.classList.remove("dragged");
@@ -67,7 +85,7 @@ const DropZone = () => {
       e.preventDefault();
       dropzone.current.classList.remove("dragged");
     });
-  }, [dropzone, browsebtn, fileinputref]);
+  }, [dropzone, browsebtn, fileinputref, bgbarcont]);
 
   useEffect(() => {}, [percent]);
 
@@ -104,7 +122,9 @@ const DropZone = () => {
             </span>
           </div>
         </div>
-        <ProgressBar percent={percent} setPercent={setPercent} />
+        <div ref={bgbarcont} className="showhide">
+          <ProgressBar percent={percent} setPercent={setPercent} />
+        </div>
       </section>
     </>
   );
