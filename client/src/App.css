@@ -2,21 +2,25 @@
     --mainbgcolor: #eff5ef;
     /* --mainbgcolor: #6f6f6f; */
     --bordercolor: #0288d147;
+    --containerwidth: 500px;
 }
 
 body,
 html {
-    font-family: syste-ui;
+    font-family: system-ui;
     background-color: var(--mainbgcolor);
     height: 100%;
     padding: 0;
     margin: 0;
 }
 
-body {
+body,
+.dropzone,
+.uploadcontainer {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .uploadcontainer {
@@ -27,8 +31,104 @@ body {
 }
 
 .dropzone {
-    width: 500px;
+    width: var(--containerwidth);
     min-height: 200px;
     border: 2px dashed var(--bordercolor);
     border-radius: 10px;
+    transition: all 1s ease;
+}
+
+.dragged.dropzone {
+    background: var(--mainbgcolor);
+    border-color: #2196f3;
+}
+
+.iconcontainer {
+    width: 75px;
+    height: 100px;
+    position: relative;
+    transition: all 1 ease-in-out;
+}
+
+.iconcontainer img {
+    width: 75px;
+    position: absolute;
+    transform-origin: bottom;
+}
+
+.iconcontainer .center {
+    z-index: 3;
+}
+
+.dragged .iconcontainer .center {
+    transform: translateY(-5px);
+}
+
+.dragged .iconcontainer .right {
+    transform: rotate(10deg) translateX(17px) scale(.9);
+    filter: grayscale(.5);
+}
+
+.dragged .iconcontainer .left {
+    transform: rotate(-10deg) translateX(-17px) scale(.9);
+    filter: grayscale(.5);
+}
+
+#fileinput {
+    display: none;
+}
+
+.browsebutton {
+    color: #2196f3;
+    cursor: pointer;
+}
+
+.progresscontainer {
+    width: var(--containerwidth);
+    height: 70px;
+    border: 2px solid var(--mainbgcolor);
+    margin-bottom: 25px;
+    margin-top: 25px;
+    border-radius: 10px;
+    position: relative;
+    display: none;
+}
+
+.progresscontainer .bgprogress {
+    background: var(--mainbgcolor);
+    width: 0%;
+    height: 100%;
+    /* transform: scaleX(0); */
+    /* transform-origin: left; */
+    border-radius: 3%;
+    transform-origin: left;
+    transition: width .2s linear;
+    position: absolute;
+    /* z-index: ; */
+}
+
+.progresscontainer .innerall {
+    position: absolute;
+    margin: 10px 15px;
+    width: calc(100% - 30px);
+}
+
+.percent {
+    margin: 5px;
+    font-size: 15px;
+    opacity: .8;
+}
+
+.smallpbbar {
+    height: 3px;
+    width: 100%;
+    background-color: #03a9f4;
+    border-radius: 2px;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: all .2s linear;
+}
+
+.percentcontainer {
+    width: 100%;
 }
